@@ -3,7 +3,8 @@ import os
 import numpy as np
 
 import tensorflow as tf
-assert tf.__version__.startswith('2')
+
+assert tf.__version__.startswith("2")
 
 from tflite_model_maker import model_spec
 from tflite_model_maker import image_classifier
@@ -22,4 +23,4 @@ model = image_classifier.create(train_data)
 
 loss, accuracy = model.evaluate(test_data)
 
-model.export(export_dir='.')
+model.export(export_dir=".")

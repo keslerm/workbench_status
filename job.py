@@ -6,19 +6,17 @@ import tflite_runtime.interpreter as tflite
 import redis
 import datetime
 
-rd = redis.Redis(
-        host="localhost",
-        port=6379)
+rd = redis.Redis(host="localhost", port=6379)
 
 labels = ["clean", "messy"]
 
 inter = tflite.Interpreter(
-            model_path="model.tflite",
-            experimental_delegates=[tflite.load_delegate("libedgetpu.so.1")],
-        )
+    model_path="model.tflite",
+    experimental_delegates=[tflite.load_delegate("libedgetpu.so.1")],
+)
 
 inter.allocate_tensors()
-cam = cv2.VideoCapture(1)  #ignore the errors
+cam = cv2.VideoCapture(1)  # ignore the errors
 r, frame = cam.read()
 img = cv2.resize(frame, (224, 224))
 
@@ -37,9 +35,8 @@ res = {
     "last_checked": str(datetime.datetime.today()),
 }
 
-rd.set('workbench_status', json.dumps(res))
+rd.set("workbench_status", json.dumps(res))
 
-val = rd.get('workbench_status')
+val = rd.get("workbench_status")
 
 print(val)
-
