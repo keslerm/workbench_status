@@ -1,3 +1,4 @@
+# HEYO READ THIS
 This is an old and crappy version of this project, for the new super sweet version check it out here: https://git.sr.ht/~rridley/workbenchai
 
 # Workbench Status
